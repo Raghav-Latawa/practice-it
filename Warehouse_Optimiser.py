@@ -1,14 +1,13 @@
 
 
-# Importing the libraries
+
 import numpy as np
 
-# Setting the parameters gamma and alpha for the Q-Learning
+
 gamma = 0.75
 alpha = 0.9
 
 
-# Defining the states
 location_to_state = {'A': 0,
                      'B': 1,
                      'C': 2,
@@ -22,10 +21,10 @@ location_to_state = {'A': 0,
                      'K': 10,
                      'L': 11}
 
-# Defining the actions
+
 actions = [0,1,2,3,4,5,6,7,8,9,10,11]
 
-# Defining the rewards
+
 R = np.array([[0,1,0,0,0,0,0,0,0,0,0,0],
               [1,0,1,0,0,1,0,0,0,0,0,0],
               [0,1,0,0,0,0,1,0,0,0,0,0],
@@ -41,10 +40,10 @@ R = np.array([[0,1,0,0,0,0,0,0,0,0,0,0],
 
 
 
-# Making a mapping from the states to the locations
+
 state_to_location = {state: location for location, state in location_to_state.items()}
 
-# Making a function that returns the shortest route from a starting to ending location
+
 def route(starting_location, ending_location):
     R_new = np.copy(R)
     ending_state = location_to_state[ending_location]
@@ -71,10 +70,10 @@ def route(starting_location, ending_location):
 
 
 
-# Making the final function that returns the optimal route
+
 def best_route(starting_location, intermediary_location, ending_location):
     return route(starting_location, intermediary_location) + route(intermediary_location, ending_location)[1:]
 
-# Printing the final route
+
 print('Route:')
 best_route('E', 'K', 'G')
